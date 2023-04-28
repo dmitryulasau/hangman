@@ -79,7 +79,7 @@ function Game() {
     <Box sx={{ maxWidth: 1100, margin: "0 auto" }}>
       <Grid container spacing={3}>
         <Grid item xs={3}>
-          <Scoreboard />
+          <Scoreboard isWinner={isWinner} />
         </Grid>
         <Grid item xs={6}>
           <Grid container spacing={3} direction="column">

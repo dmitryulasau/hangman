@@ -1,6 +1,45 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../context/Context";
+import axios from "axios";
 
-export default function Scoreboard() {
+export default function Scoreboard({ isWinner }) {
+  const { user, setUser } = useContext(Context);
+  console.log(user);
+  console.log(isWinner);
+
+  const updateUserScore = async (username) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8800/auth/update-score/${user._id}`,
+        {
+          score: user.score + 10, // Update the score
+        }
+      );
+      console.log(response.data); // Log the updated user object
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUserData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8800/auth/${user._id}`
+      );
+      console.log(response.data); // Log the retrieved user object
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  if (isWinner) {
+    updateUserScore(user.username);
+  }
+
   return (
     <div
       style={{
@@ -38,8 +77,8 @@ export default function Scoreboard() {
         }}
       >
         <div>1</div>
-        <div>KATE</div>
-        <div>80</div>
+        <div>{user.username.toUpperCase()}</div>
+        <div>{user.score}</div>
       </div>
     </div>
   );
