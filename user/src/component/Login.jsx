@@ -25,11 +25,14 @@ const Login = () => {
     setIsLoading(true);
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("http://localhost:8800/auth/login", {
-        username: userRef.current.value,
-        password: passwordRef.current.value,
-      });
-      window.location = "/";
+      const res = await axios.post(
+        "https://hangman-80z3.onrender.com/auth/login",
+        {
+          username: userRef.current.value,
+          password: passwordRef.current.value,
+        }
+      );
+      window.location = "/game";
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });

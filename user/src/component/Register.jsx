@@ -21,7 +21,7 @@ const Signup = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const url = "http://localhost:8800/auth/register";
+      const url = "https://hangman-80z3.onrender.com/auth/register";
       const { data: res } = await axios.post(url, data);
       navigate("/login");
       console.log(res.message);

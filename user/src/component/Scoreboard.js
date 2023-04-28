@@ -10,7 +10,7 @@ export default function Scoreboard({ isWinner }) {
   const updateUserScore = async (username) => {
     try {
       const response = await axios.put(
-        `http://localhost:8800/auth/update-score/${user._id}`,
+        `https://hangman-80z3.onrender.com/auth/update-score/${user._id}`,
         {
           score: user.score + 10, // Update the score
         }
@@ -24,7 +24,7 @@ export default function Scoreboard({ isWinner }) {
   const getUserData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8800/auth/${user._id}`
+        `https://hangman-80z3.onrender.com/auth/${user._id}`
       );
       console.log(response.data); // Log the retrieved user object
     } catch (error) {
