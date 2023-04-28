@@ -1,0 +1,75 @@
+.btn_new {
+  min-width: 200px;
+  font-family: "Press Start 2P";
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #82c91e;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(52, 58, 64);
+  box-shadow: inset -4px -4px 0px 0px #495057;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn_share {
+  min-width: 200px;
+  font-family: "Press Start 2P";
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #339af0;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(52, 58, 64);
+  box-shadow: inset -4px -4px 0px 0px #495057;
+  margin-bottom: 200px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn_logout {
+  min-width: 200px;
+  font-family: "Press Start 2P";
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ff8787;
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(52, 58, 64);
+  box-shadow: inset -4px -4px 0px 0px #495057;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn_new:hover {
+  background-color: #66a80f;
+  cursor: pointer;
+}
+
+.btn_share:hover {
+  background-color: #1c7ed6;
+  cursor: pointer;
+}
+
+.btn_logout:hover {
+  background-color: #fa5252;
+  cursor: pointer;
+}
+
+.btn_new:active {
+  background-color: #66a80f;
+  box-shadow: inset 4px 4px 0px 0px #495057;
+  transform: translateY(4px);
+}
+
+.btn_share:active {
+  background-color: #1c7ed6;
+  box-shadow: inset 4px 4px 0px 0px #495057;
+  transform: translateY(4px);
+}
+
+.btn_logout:active {
+  background-color: #fa5252;
+  box-shadow: inset 4px 4px 0px 0px #495057;
+  transform: translateY(4px);
+}

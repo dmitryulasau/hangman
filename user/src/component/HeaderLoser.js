@@ -1,9 +1,11 @@
 import React from "react";
-const Header = ({ wordToGuess }) => {
+
+export default function HeaderLoser() {
   return (
     <div
       style={{
-        backgroundColor: "#f1f3f5",
+        backgroundColor: "#ff6b6b",
+
         minWidth: "100%",
         borderRadius: "0.8rem",
 
@@ -12,8 +14,7 @@ const Header = ({ wordToGuess }) => {
         justifyContent: "center",
       }}
     >
-      <h3>{wordToGuess[1].toUpperCase()}</h3>
+      <h3> GAME OVER </h3>
     </div>
   );
-};
-export default Header;
+}

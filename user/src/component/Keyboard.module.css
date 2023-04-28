@@ -1,0 +1,48 @@
+.btn {
+  /* width: 100%;
+  border: 3px solid black;
+  background: none;
+  aspect-ratio: 1 / 1;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+  font-family: "Press Start 2P"; */
+
+  width: 100%;
+  background: #868e96;
+  border-radius: 8px;
+  display: inline-block;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  padding: 20px;
+  font-family: "Press Start 2P", cursive;
+  text-decoration: none;
+  color: #f8f9fa;
+  box-shadow: inset -4px -4px 0px 0px #495057;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn.active {
+  background-color: #74b816;
+  cursor: default;
+  color: #e9fac8;
+  box-shadow: inset 4px 4px 0px 0px #5c940d;
+}
+
+.btn.inactive {
+  opacity: 0.3;
+  cursor: default;
+  box-shadow: none;
+}
+
+.btn:hover:not(:disabled),
+.btn:focus:not(:disabled) {
+  background-color: #74c0fc;
+}

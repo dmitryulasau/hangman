@@ -1,0 +1,21 @@
+.btn_hint {
+  transition: background-color 0.3s ease-in-out;
+  background-color: #c5f6fa;
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  cursor: pointer;
+  position: relative;
+  box-shadow: inset -4px -4px 0px 0px #495057;
+}
+
+.btn_hint:hover {
+  background-color: #1098ad;
+}
+
+.btn_hint:active {
+  box-shadow: inset 4px 4px 0px 0px #495057;
+  transform: translateY(4px);
+}
