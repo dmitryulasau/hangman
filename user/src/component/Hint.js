@@ -25,7 +25,7 @@ export default function Hint({ wordToGuess }) {
         backgroundColor,
       }}
     >
-      {showHint ? buttonText : "PRESS SHOW HINT"}
+      {showHint ? buttonText : "PRESS TO SHOW A HINT"}
     </div>
   );
 }

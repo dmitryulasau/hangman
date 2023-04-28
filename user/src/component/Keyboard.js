@@ -36,7 +36,6 @@ export default function Keyboard({
   addGuessedLetter,
   disabled = false,
 }) {
-  console.log(activeLetters);
   return (
     <div
       style={{

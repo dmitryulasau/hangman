@@ -6,6 +6,7 @@ const Header = ({ wordToGuess }) => {
         backgroundColor: "#f1f3f5",
         minWidth: "100%",
         borderRadius: "0.8rem",
+        color: "#0C4160",
 
         display: "flex",
         alignItems: "center",

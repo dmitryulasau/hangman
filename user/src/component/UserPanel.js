@@ -1,7 +1,19 @@
 import React from "react";
 import styles from "./UserPanel.module.css";
+import { useContext } from "react";
+import { Context } from "../context/Context";
+
+function handleLogout() {
+  localStorage.removeItem("user");
+  window.location.href = "/login";
+}
+
+function handleNewGame() {
+  window.location.reload();
+}
 
 export default function UserPanel() {
+  const { user } = useContext(Context);
   return (
     <div
       style={{
@@ -26,7 +38,7 @@ export default function UserPanel() {
           borderTopRightRadius: "0.8rem",
         }}
       >
-        HELLO, KATE!
+        HI, {user.username.toUpperCase()}!
       </div>
       <div
         style={{
@@ -37,7 +49,9 @@ export default function UserPanel() {
           gap: "10px",
         }}
       >
-        <button className={styles.btn_new}>NEW GAME</button>
+        <button className={styles.btn_new} onClick={handleNewGame}>
+          NEW GAME
+        </button>
         <button className={styles.btn_share}>SHARE</button>
         <div
           style={{
@@ -47,7 +61,9 @@ export default function UserPanel() {
             marginBottom: "50px",
           }}
         >
-          <button className={styles.btn_logout}>LOG OUT</button>
+          <button className={styles.btn_logout} onClick={handleLogout}>
+            LOG OUT
+          </button>
         </div>
       </div>
     </div>

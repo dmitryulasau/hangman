@@ -28,16 +28,26 @@ export default function Hangman({ numberOfGuesses }) {
   );
 
   const BODY = (
-    <div
-      style={{
-        width: "10px",
-        height: "100px",
-        background: "#212529",
-        position: "absolute",
-        top: "120px",
-        right: "0",
-      }}
-    />
+    <>
+      <div
+        style={{
+          width: "10px",
+          height: "100px",
+          background: "#212529",
+          position: "absolute",
+          top: "120px",
+          right: "0",
+        }}
+      />
+      <div
+        style={{
+          border: "5px solid #f59f00",
+          position: "absolute",
+          top: "120px",
+          right: "0",
+        }}
+      />
+    </>
   );
 
   const RIGHT_ARM = (
@@ -160,14 +170,18 @@ export default function Hangman({ numberOfGuesses }) {
 
         <div
           style={{
-            height: "400px",
+            height: "370px",
             width: "10px",
             background: "#805333",
             marginLeft: "120px",
           }}
         />
         <div
-          style={{ height: "20px", width: "250px", background: "#2b8a3e" }}
+          style={{
+            height: "20px",
+            width: "250px",
+            background: "#2b8a3e",
+          }}
         />
       </div>
     </>
