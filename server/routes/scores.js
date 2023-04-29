@@ -37,7 +37,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//GET TASK
+//GET SCORE
 router.get("/:id", async (req, res) => {
   try {
     const score = await Score.findById(req.params.id);

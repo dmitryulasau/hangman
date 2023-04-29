@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ShareModal.module.css";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 export default function ShareModal({ onClose }) {
   const [generatedLink, setGeneratedLink] = useState("");
@@ -10,11 +12,26 @@ export default function ShareModal({ onClose }) {
     const link =
       "http://example.com/" + Math.random().toString(36).substr(2, 9);
     setGeneratedLink(link);
+
+    axios
+      .post("https://hangman-80z3.onrender.com/words/add", { word })
+      .then((response) => {
+        console.log("Word saved to database:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error saving word to database:", error);
+      });
   }
 
   function handleCopyLink() {
-    // Copy the generated link to the clipboard
-    navigator.clipboard.writeText(generatedLink);
+    if (generatedLink) {
+      try {
+        navigator.clipboard.writeText(generatedLink);
+        toast.info("Link copied!");
+      } catch (error) {
+        toast.error("Something went wrong");
+      }
+    }
   }
 
   function handleWordChange(event) {
@@ -52,6 +69,7 @@ export default function ShareModal({ onClose }) {
         <button
           className={styles.generate_link_button}
           onClick={handleCopyLink}
+          disabled={!generatedLink}
         >
           COPY LINK<i className="fas fa-copy"></i>
         </button>

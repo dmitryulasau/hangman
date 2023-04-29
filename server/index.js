@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const authRoute = require("./routes/auth");
 const scoreRoute = require("./routes/scores");
+const wordRoute = require("./routes/words");
 
 app.use(cors());
 dotenv.config();
@@ -23,6 +24,7 @@ mongoose
 
 app.use("/auth", authRoute);
 app.use("/scores", scoreRoute);
+app.use("/words", wordRoute);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
