@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "react-hot-toast": "^2.4.1"
+    "react-hot-toast": "^2.4.1",
+    "react-notifications": "^1.7.4",
+    "react-notifications-component": "^4.0.1"
   }
 }

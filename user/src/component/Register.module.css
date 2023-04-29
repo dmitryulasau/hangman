@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #0f1c35;
+  background-color: #1c7ed6;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -64,6 +64,7 @@
   padding: 15px;
   border-radius: 10px;
   background-color: #edf5f3;
+
   margin: 5px 0;
   font-size: 14px;
   font-family: "Press Start 2P";
@@ -84,7 +85,7 @@
 .blue_btn {
   border: none;
   outline: none;
-  padding: 12px 0;
+  padding: 14px 0;
   background-color: white;
   border-radius: 8px;
   width: 180px;
@@ -97,7 +98,7 @@
 }
 
 .blue_btn {
-  background-color: #0f1c35;
+  background-color: #1c7ed6;
   color: white;
   margin: 10px;
 }
@@ -142,4 +143,9 @@
   .blue_btn {
     width: 100%;
   }
+}
+
+.input:focus {
+  outline: 2px solid #e64980;
+  transition: box-shadow 0.2s ease-in-out;
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 import { BeatLoader } from "react-spinners";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -24,7 +25,9 @@ const Signup = () => {
       const url = "https://hangman-80z3.onrender.com/auth/register";
       const { data: res } = await axios.post(url, data);
       navigate("/login");
+      toast.success("Registration successful!");
     } catch (error) {
+      toast.error("Choose another name");
       if (
         error.response &&
         error.response.status >= 400 &&

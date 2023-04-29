@@ -4,6 +4,7 @@ import Register from "./component/Register";
 import Login from "./component/Login";
 import Game from "./component/Game";
 import "./App.css";
+import "react-notifications-component/dist/theme.css";
 
 function App() {
   return (

@@ -68,7 +68,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #0f1c35;
+  background-color: #1c7ed6;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -104,7 +104,7 @@
 }
 
 .blue_btn {
-  background-color: #0f1c35;
+  background-color: #1c7ed6;
   color: white;
   margin: 10px;
 }
@@ -187,4 +187,9 @@
   .white_btn {
     margin-bottom: 30px;
   }
+}
+
+.input:focus {
+  outline: 2px solid #e64980;
+  transition: box-shadow 0.2s ease-in-out;
 }
