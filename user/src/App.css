@@ -8,6 +8,10 @@ body {
   font-family: "Press Start 2P", sans-serif;
   font-size: 2rem;
   color: #343a40;
+  background: url("https://res.cloudinary.com/dulasau/image/upload/o_60,q_100/v1682743911/ART_tmsaep.jpg")
+    no-repeat center center fixed;
+
+  background-size: cover;
 }
 
 ::-webkit-scrollbar {

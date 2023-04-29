@@ -35,6 +35,7 @@ const Login = () => {
       window.location = "/game";
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     } catch (err) {
+      toast.error("Wrong credentials");
       dispatch({ type: "LOGIN_FAILURE" });
     }
     setIsLoading(false);
