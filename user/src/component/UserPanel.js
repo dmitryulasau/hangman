@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import styles from "./UserPanel.module.css";
 
 import { Context } from "../context/Context";
+import ShareModal from "./ShareModal";
 
 export default function UserPanel() {
   const { user, dispatch } = useContext(Context);
+  const [showShareModal, setShowShareModal] = useState(false); // State for showing/hiding the share modal
 
   function handleLogout() {
     localStorage.removeItem("user");
@@ -15,6 +17,14 @@ export default function UserPanel() {
 
   function handleNewGame() {
     window.location.reload();
+  }
+
+  function handleShare() {
+    setShowShareModal(true); // Show the share modal
+  }
+
+  function handleCloseModal() {
+    setShowShareModal(false); // Hide the share modal
   }
 
   return (
@@ -68,7 +78,9 @@ export default function UserPanel() {
         <button className={styles.btn_new} onClick={handleNewGame}>
           NEW GAME
         </button>
-        <button className={styles.btn_share}>SHARE</button>
+        <button className={styles.btn_share} onClick={handleShare}>
+          SHARE
+        </button>
         <div
           style={{
             display: "flex",
@@ -82,6 +94,7 @@ export default function UserPanel() {
           </button>
         </div>
       </div>
+      {showShareModal && <ShareModal onClose={handleCloseModal} />}
     </div>
   );
 }
