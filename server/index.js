@@ -5,6 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const authRoute = require("./routes/auth");
+const scoreRoute = require("./routes/scores");
 
 app.use(cors());
 dotenv.config();
@@ -21,6 +22,7 @@ mongoose
   .catch((error) => console.log("Error connecting to MongoDB", error));
 
 app.use("/auth", authRoute);
+app.use("/scores", scoreRoute);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

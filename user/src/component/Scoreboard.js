@@ -1,55 +1,33 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../context/Context";
 import axios from "axios";
 
 export default function Scoreboard({ isWinner }) {
-  const { user, setUser } = useContext(Context);
-  console.log(user);
-  console.log(isWinner);
-
-  const updateUserScore = async (username) => {
-    try {
-      const response = await axios.put(
-        `https://hangman-80z3.onrender.com/auth/update-score/${user._id}`,
-        {
-          score: user.score + 10, // Update the score
-        }
-      );
-      console.log(response.data); // Log the updated user object
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getUserData = async () => {
-    try {
-      const response = await axios.get(
-        `https://hangman-80z3.onrender.com/auth/${user._id}`
-      );
-      console.log(response.data); // Log the retrieved user object
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { user } = useContext(Context);
 
   useEffect(() => {
-    getUserData();
-  }, []);
-
-  if (isWinner) {
-    updateUserScore(user.username);
-  }
+    if (isWinner) {
+      axios
+        .put(`http://localhost:8800/auth/update-score/${user._id}`, {
+          score: user.score + 10,
+        })
+        .then((response) => {
+          console.log("Score updated successfully");
+        })
+        .catch((error) => {
+          console.log("Error updating score:", error);
+        });
+    }
+  }, [isWinner]);
 
   return (
     <div
       style={{
         backgroundColor: "#f1f3f5",
         minHeight: "65vh",
-
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-
         borderRadius: "0.8rem",
       }}
     >

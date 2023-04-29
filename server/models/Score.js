@@ -4,6 +4,7 @@ const ScoreSchema = new mongoose.Schema(
   {
     score: {
       type: Number,
+      default: 0,
     },
     username: {
       type: String,
@@ -13,4 +14,4 @@ const ScoreSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Score", TaskSchema);
+module.exports = mongoose.model("Score", ScoreSchema);

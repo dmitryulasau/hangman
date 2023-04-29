@@ -1,9 +1,9 @@
 import { createContext, useEffect, useReducer } from "react";
 import Reducer from "./Reducer";
+import axios from "axios";
 
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("user")) || null,
-
   isFetching: false,
   error: false,
 };
@@ -15,6 +15,19 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(state.user));
+  }, [state.user]);
+
+  useEffect(() => {
+    if (state.user) {
+      axios
+        .get(`http://localhost:8800/auth/user/${state.user._id}`)
+        .then((response) => {
+          dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
+        })
+        .catch((error) => {
+          console.log("Error retrieving user:", error);
+        });
+    }
   }, [state.user]);
 
   return (
