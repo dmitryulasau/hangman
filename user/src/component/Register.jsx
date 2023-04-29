@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
@@ -24,7 +24,6 @@ const Signup = () => {
       const url = "https://hangman-80z3.onrender.com/auth/register";
       const { data: res } = await axios.post(url, data);
       navigate("/login");
-      console.log(res.message);
     } catch (error) {
       if (
         error.response &&

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import Reducer from "./Reducer";
 import axios from "axios";
 
@@ -25,7 +25,7 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     if (state.user) {
       axios
-        .get(`http://localhost:8800/auth/user/${state.user._id}`)
+        .get(`https://hangman-80z3.onrender.com/auth/user/${state.user._id}`)
         .then((response) => {
           dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
         })

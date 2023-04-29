@@ -1,10 +1,9 @@
-import { useState } from "react";
+import React, { useState, useContext, useRef } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import { BeatLoader } from "react-spinners";
 
-import { useContext, useRef } from "react";
 import { Context } from "../context/Context";
 
 const Login = () => {

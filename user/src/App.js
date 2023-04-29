@@ -6,7 +6,6 @@ import Game from "./component/Game";
 import "./App.css";
 
 function App() {
-  const user = false;
   return (
     <div className="App">
       <BrowserRouter>

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "./UserPanel.module.css";
-import { useContext, useState } from "react";
+
 import { Context } from "../context/Context";
 
 export default function UserPanel() {

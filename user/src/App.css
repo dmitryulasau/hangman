@@ -9,3 +9,7 @@ body {
   font-size: 2rem;
   color: #343a40;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

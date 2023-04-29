@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import words from "../wordList.json";
 import Header from "./Header";
 import HeaderWinner from "./HeaderWinner";

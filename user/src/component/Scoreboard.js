@@ -8,7 +8,7 @@ export default function Scoreboard({ isWinner }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8800/auth/users")
+      .get("https://hangman-80z3.onrender.com/auth/users")
       .then((response) => {
         const sortedUsers = response.data.sort((a, b) => b.score - a.score);
         setUsers(sortedUsers);
@@ -21,9 +21,12 @@ export default function Scoreboard({ isWinner }) {
   useEffect(() => {
     if (isWinner) {
       axios
-        .put(`http://localhost:8800/auth/update-score/${user._id}`, {
-          score: user.score + 10,
-        })
+        .put(
+          `https://hangman-80z3.onrender.com/auth/update-score/${user._id}`,
+          {
+            score: user.score + 10,
+          }
+        )
         .then((response) => {
           console.log("Score updated successfully");
         })
