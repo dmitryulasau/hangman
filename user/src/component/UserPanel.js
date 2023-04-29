@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./UserPanel.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../context/Context";
 
 function handleLogout() {
@@ -39,6 +39,22 @@ export default function UserPanel() {
         }}
       >
         HI, {user.username.toUpperCase()}!
+      </div>
+      <div
+        style={{
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#212529",
+          width: "120px",
+          height: "120px",
+          color: "#32A956",
+          borderRadius: "4px",
+          fontSize: "40px",
+        }}
+      >
+        {user.score}{" "}
       </div>
       <div
         style={{

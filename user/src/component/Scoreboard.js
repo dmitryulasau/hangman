@@ -4,6 +4,19 @@ import axios from "axios";
 
 export default function Scoreboard({ isWinner }) {
   const { user } = useContext(Context);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8800/auth/users")
+      .then((response) => {
+        const sortedUsers = response.data.sort((a, b) => b.score - a.score);
+        setUsers(sortedUsers);
+      })
+      .catch((error) => {
+        console.log("Error retrieving users:", error);
+      });
+  }, []);
 
   useEffect(() => {
     if (isWinner) {
@@ -29,6 +42,8 @@ export default function Scoreboard({ isWinner }) {
         flexDirection: "column",
         alignItems: "center",
         borderRadius: "0.8rem",
+
+        maxHeight: "65vh",
       }}
     >
       <div
@@ -52,11 +67,35 @@ export default function Scoreboard({ isWinner }) {
           backgroundColor: "#ced4da",
           justifyContent: "space-around",
           marginTop: "5px",
+          color: "#d9480f",
         }}
       >
-        <div>1</div>
-        <div>{user.username.toUpperCase()}</div>
-        <div>{user.score}</div>
+        <div>#</div>
+        <div>PLAYER</div>
+        <div>PTS</div>
+      </div>
+      <div style={{ width: "100%", overflow: "auto" }}>
+        {users.map((user, index) => (
+          <div
+            key={user._id}
+            style={{
+              display: "flex",
+              padding: "5px 5px",
+              justifyContent: "space-between",
+
+              backgroundColor: "#ced4da",
+              marginTop: "5px",
+            }}
+          >
+            <div>{index + 1}</div>
+            <div style={{}}>
+              {user.username.length > 5
+                ? user.username.slice(0, 5).toUpperCase()
+                : user.username.toUpperCase()}
+            </div>
+            <div style={{}}>{user.score}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
