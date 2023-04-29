@@ -17,6 +17,11 @@ export const ContextProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(state.user));
   }, [state.user]);
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    dispatch({ type: "LOGOUT" });
+  };
+
   useEffect(() => {
     if (state.user) {
       axios
@@ -37,6 +42,7 @@ export const ContextProvider = ({ children }) => {
         isFetching: state.isFetching,
         error: state.error,
         dispatch,
+        handleLogout,
       }}
     >
       {children}

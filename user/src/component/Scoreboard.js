@@ -83,7 +83,7 @@ export default function Scoreboard({ isWinner }) {
               padding: "5px 5px",
               justifyContent: "space-between",
 
-              backgroundColor: "#ced4da",
+              backgroundColor: "#dee2e6",
               marginTop: "5px",
             }}
           >

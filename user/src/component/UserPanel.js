@@ -3,22 +3,24 @@ import styles from "./UserPanel.module.css";
 import { useContext, useState } from "react";
 import { Context } from "../context/Context";
 
-function handleLogout() {
-  localStorage.removeItem("user");
-  window.location.href = "/login";
-}
-
-function handleNewGame() {
-  window.location.reload();
-}
-
 export default function UserPanel() {
-  const { user } = useContext(Context);
+  const { user, dispatch } = useContext(Context);
+
+  function handleLogout() {
+    localStorage.removeItem("user");
+    dispatch({ type: "LOGOUT" });
+    console.log("LOGGED OUT!");
+    window.location.href = "/login";
+  }
+
+  function handleNewGame() {
+    window.location.reload();
+  }
+
   return (
     <div
       style={{
         backgroundColor: "#f1f3f5",
-
         display: "flex",
         flexDirection: "column",
         borderRadius: "8px",
@@ -31,7 +33,6 @@ export default function UserPanel() {
           padding: "1rem 0",
           backgroundColor: "#c3fae8",
           borderBottom: "3px solid #dee2e6",
-
           width: "100%",
           textAlign: "center",
           borderTopLeftRadius: "0.8rem",
@@ -60,7 +61,6 @@ export default function UserPanel() {
         style={{
           display: "flex",
           flexDirection: "column",
-
           alignSelf: "center",
           gap: "10px",
         }}
