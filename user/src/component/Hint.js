@@ -3,7 +3,9 @@ import styles from "./Hint.module.css";
 
 export default function Hint({ wordToGuess }) {
   const [showHint, setShowHint] = useState(false);
-  const buttonText = wordToGuess[2].toUpperCase();
+  const buttonText = Array.isArray(wordToGuess)
+    ? wordToGuess[2].toUpperCase()
+    : "NO HINT IN CHALLENGE MODE";
 
   const handleClick = () => {
     setShowHint(!showHint);

@@ -15,6 +15,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/game" element={<Game />} />
           <Route path="/" element={<Navigate replace to="/login" />} />
+          <Route path="/:wordId" element={<Game />} />
         </Routes>
       </BrowserRouter>
     </div>

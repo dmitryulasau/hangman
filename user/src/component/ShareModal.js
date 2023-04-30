@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ShareModal.module.css";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Game from "./Game"; // import the component that renders the game
 
 export default function ShareModal({ onClose }) {
   const [generatedLink, setGeneratedLink] = useState("");
   const [word, setWord] = useState("");
 
-  function handleGenerateLink() {
-    // Generate a random link or use an API to generate a unique link
-    const link =
-      "http://example.com/" + Math.random().toString(36).substr(2, 9);
-    setGeneratedLink(link);
+  async function handleGenerateLink() {
+    try {
+      // Add the word to the database and get its ID
+      const response = await axios.post(
+        "https://hangman-80z3.onrender.com/words/add",
+        { word }
+      );
+      const wordId = response.data._id;
 
-    axios
-      .post("https://hangman-80z3.onrender.com/words/add", { word })
-      .then((response) => {
-        console.log("Word saved to database:", response.data);
-      })
-      .catch((error) => {
-        console.error("Error saving word to database:", error);
-      });
+      // Generate a link based on the word ID
+      const link = `https://hangman-dmitryulasau.vercel.app/${wordId}`;
+      setGeneratedLink(link);
+
+      console.log("Word saved to database:", response.data);
+    } catch (error) {
+      console.error("Error saving word to database:", error);
+    }
   }
 
   function handleCopyLink() {

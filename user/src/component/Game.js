@@ -12,26 +12,61 @@ import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import HangmanWord from "./HangmanWord";
 import HeaderLoser from "./HeaderLoser";
+import axios from "axios";
 
-function getWord() {
-  return words[Math.floor(Math.random() * words.length)];
+async function getWord(url) {
+  if (url.includes("game")) {
+    return words[Math.floor(Math.random() * words.length)];
+  }
+
+  const urlObject = new URL(url);
+  const wordId = urlObject.pathname.split("/").pop();
+
+  try {
+    const response = await axios.get(
+      `https://hangman-80z3.onrender.com/words/${wordId}`
+    );
+
+    return response.data.word.toLowerCase();
+  } catch (error) {
+    console.log(error);
+
+    return words[Math.floor(Math.random() * words.length)];
+  }
 }
+const currentUrl = window.location.href;
 
 function Game() {
-  const [wordToGuess, setWordToGuess] = useState(() => {
-    return words[Math.floor(Math.random() * words.length)];
-  });
+  const [wordToGuess, setWordToGuess] = useState(
+    words[Math.floor(Math.random() * words.length)]
+  );
+
+  useEffect(() => {
+    if (currentUrl.length > 20) {
+      getWord(currentUrl)
+        .then((fetchedWord) => {
+          setWordToGuess(fetchedWord);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
 
   const [guessedLetters, setGuessedLetters] = useState([]);
 
-  const incorrectLetters = guessedLetters.filter(
-    (letter) => !wordToGuess[0].includes(letter)
+  const incorrectLetters = guessedLetters.filter((letter) =>
+    Array.isArray(wordToGuess)
+      ? !wordToGuess[0].includes(letter)
+      : !wordToGuess.includes(letter)
   );
 
   const isLoser = incorrectLetters.length >= 6;
-  const isWinner = wordToGuess[0]
-    .split("")
-    .every((letter) => guessedLetters.includes(letter));
+  const isWinner = Array.isArray(wordToGuess)
+    ? wordToGuess[0]
+        .split("")
+        .every((letter) => guessedLetters.includes(letter))
+    : wordToGuess.split("").every((letter) => guessedLetters.includes(letter));
 
   const addGuessedLetter = useCallback(
     (letter) => {
@@ -110,7 +145,9 @@ function Game() {
           <Keyboard
             disabled={isWinner || isLoser}
             activeLetters={guessedLetters.filter((letter) =>
-              wordToGuess[0].includes(letter)
+              Array.isArray(wordToGuess)
+                ? wordToGuess[0].includes(letter)
+                : wordToGuess.includes(letter)
             )}
             inactiveLetters={incorrectLetters}
             addGuessedLetter={addGuessedLetter}

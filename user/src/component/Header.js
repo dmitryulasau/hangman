@@ -13,7 +13,11 @@ const Header = ({ wordToGuess }) => {
         justifyContent: "center",
       }}
     >
-      <h3>{wordToGuess[1].toUpperCase()}</h3>
+      <h3>
+        {Array.isArray(wordToGuess)
+          ? wordToGuess[1].toUpperCase()
+          : "CHALLENGE MODE"}
+      </h3>
     </div>
   );
 };
